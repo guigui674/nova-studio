@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova Studio — Think. Build. Grow.</title>
+<style>
+* { box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #071426;
+  color: #fff;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 8%;
+  border-bottom: 1px solid #203650;
+  position: sticky;
+  top: 0;
+  background: #071426;
+  z-index: 10;
+}
+
+.logo {
+  color: #55aaff;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+nav { display: flex; gap: 22px; }
+
+nav a {
+  color: #c5d5e8;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover { color: #55aaff; }
+
+.hero {
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 70px 20px;
+  background: radial-gradient(ellipse at top, #153c68, #071426 70%);
+}
+
+.tag {
+  color: #62b5ff;
+  border: 1px solid #2878bc;
+  border-radius: 30px;
+  padding: 9px 16px;
+  font-size: 13px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 68px);
+  margin: 25px 0 12px;
+}
+
+.hero h1 span { color: #55aaff; }
+
+.hero p {
+  color: #b5c8df;
+  font-size: 18px;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 15px 24px;
+  background: #2589ed;
+  color: white;
+  border-radius: 9px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover { background: #1473d0; }
+
+section {
+  max-width: 1050px;
+  margin: auto;
+  padding: 75px 22px;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.section-description {
+  color: #a9bad0;
+  line-height: 1.7;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+
+.card, .panel {
+  background: #10243d;
+  border: 1px solid #294361;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.card h3 { color: #70baff; }
+
+.card p {
+  color: #b2c3d8;
+  line-height: 1.6;
+}
+
+.panel { margin-top: 25px; }
+
+label {
+  display: block;
+  margin: 17px 0 8px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #45617e;
+  font-size: 16px;
+}
+
+.result {
+  color: #72bdff;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.status {
+  color: #72d6a5;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 100px;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.bar-bg {
+  height: 18px;
+  background: #263d59;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 20px;
+  transition: width .4s;
+}
+
+.income-bar { background: #35b879; }
+.expense-bar { background: #ed765e; }
+.balance-bar { background: #3999ff; }
+
+.chart-value {
+  text-align: right;
+  font-size: 13px;
+}
+
+.about-box {
+  background: linear-gradient(120deg, #102d4d, #10243d);
+  border: 1px solid #294361;
+  border-radius: 16px;
+  padding: 35px;
+  line-height: 1.8;
+  color: #c5d5e8;
+}
+
+footer {
+  text-align: center;
+  border-top: 1px solid #203650;
+  padding: 35px 15px;
+  color: #91a5bd;
+  line-height: 1.8;
+}
+
+@media(max-width: 650px) {
+  header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+  .chart-row {
+    grid-template-columns: 75px 1fr;
+  }
+  .chart-value {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">NOVA STUDIO.</div>
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#projets">Projets</a>
+    <a href="#budget">Nova Budget</a>
+    <a href="#apropos">À propos</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero" id="accueil">
+  <div class="tag">BUSINESS • FINANCE • INNOVATION</div>
+  <h1>Welcome to <span>Nova Studio.</span></h1>
+  <p>
+    Nous imaginons des outils numériques simples,
+    modernes et utiles pour accompagner les projets de demain.
+  </p>
+  <a href="#projets" class="button">Découvrir nos projets →</a>
+</div>
+
+<section id="projets">
+  <h2 class="section-title">Nos projets</h2>
+  <p class="section-description">
+    Découvrez les premières créations de Nova Studio.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>01 — Nova Budget</h3>
+      <p>
+        Un outil éducatif pour comprendre son budget,
+        visualiser ses dépenses et découvrir l'épargne.
+      </p>
+      <a href="#budget" class="button">Découvrir →</a>
+    </div>
+
+    <div class="card">
+      <h3>02 — Nova Future</h3>
+      <p>
+        Notre futur espace dédié aux idées,
+        aux projets et à l'innovation.
+      </p>
+      <span class="tag">À venir</span>
+    </div>
+
+    <div class="card">
+      <h3>03 — Nova Academy</h3>
+      <p>
+        Un futur espace pour apprendre les bases
+        du business et de la finance.
+      </p>
+      <span class="tag">À venir</span>
+    </div>
+  </div>
+</section>
+
+<section id="budget">
+  <h2 class="section-title">Nova Budget</h2>
+  <p class="section-description">
+    Ton tableau de bord financier éducatif.
+  </p>
+
+  <div class="panel">
+    <h3>Configure ton budget</h3>
+
+    <label for="income">Revenus (€)</label>
+    <input id="income" type="number" min="0" value="1000">
+
+    <label for="expenses">Dépenses (€)</label>
+    <input id="expenses" type="number" min="0" value="600">
+
+    <label for="goal">Objectif d'épargne (€)</label>
+    <input id="goal" type="number" min="0" value="200">
+
+    <button class="button" onclick="calculate()">
+      Calculer mon budget
+    </button>
+
+    <div id="result" class="result"></div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="panel">
+    <h3>Mon graphique financier</h3>
+
+    <div class="chart-row">
+      <span>Revenus</span>
+      <div class="bar-bg">
+        <div id="incomeBar" class="bar income-bar"></div>
+      </div>
+      <strong id="incomeValue" class="chart-value">0 €</strong>
+    </div>
+
+    <div class="chart-row">
+      <span>Dépenses</span>
+      <div class="bar-bg">
+        <div id="expenseBar" class="bar expense-bar"></div>
+      </div>
+      <strong id="expenseValue" class="chart-value">0 €</strong>
+    </div>
+
+    <div class="chart-row">
+      <span>Solde</span>
+      <div class="bar-bg">
+        <div id="balanceBar" class="bar balance-bar"></div>
+      </div>
+      <strong id="balanceValue" class="chart-value">0 €</strong>
+    </div>
+  </div>
+</section>
+
+<section id="apropos">
+  <h2 class="section-title">À propos de Nova Studio</h2>
+  <div class="about-box">
+    <h3>Think. Build. Grow.</h3>
+    Nova Studio est un projet de création numérique
+    consacré au business, à la finance et à l'innovation.
+
+    <br><br>
+
+    Notre ambition : apprendre, imaginer et construire
+    des outils numériques utiles et accessibles.
+
+    <br><br>
+
+    Chaque grande idée commence par un premier projet.
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contact</h2>
+  <div class="card">
+    <h3>Une idée pour Nova Studio ?</h3>
+    <p>
+      Cette rubrique sera complétée lorsque nous préparerons
+      les moyens de contact officiels du projet.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <strong style="color:#55aaff">NOVA STUDIO.</strong>
+  <br>
+  Think. Build. Grow.
+  <br>
+  © 2026 Nova Studio — Projet éducatif
+</footer>
+
+<script>
+const fields = ["income", "expenses", "goal"];
+
+function calculate() {
+  const values = {};
+
+  for (const field of fields) {
+    const input = document.getElementById(field);
+    if (input.value.trim() === "") {
+      document.getElementById("result").textContent =
+        "Merci de remplir tous les champs.";
+      return;
+    }
+
+    values[field] = Number(input.value);
+
+    if (!Number.isFinite(values[field]) || values[field] < 0) {
+      document.getElementById("result").textContent =
+        "Entre des montants valides.";
+      return;
+    }
+  }
+
+  const { income, expenses, goal } = values;
+  const balance = income - expenses;
+  const maxValue = Math.max(income, expenses, Math.max(0, balance), 1);
+
+  document.getElementById("incomeBar").style.width =
+    (income / maxValue * 100) + "%";
+
+  document.getElementById("expenseBar").style.width =
+    (expenses / maxValue * 100) + "%";
+
+  document.getElementById("balanceBar").style.width =
+    (Math.max(0, balance) / maxValue * 100) + "%";
+
+  document.getElementById("incomeValue").textContent =
+    income.toFixed(2) + " €";
+
+  document.getElementById("expenseValue").textContent =
+    expenses.toFixed(2) + " €";
+
+  document.getElementById("balanceValue").textContent =
+    balance.toFixed(2) + " €";
+
+  const message = balance >= goal
+    ? "Bravo ! Ton objectif d'épargne est atteint."
+    : "Il te manque " + (goal - balance).toFixed(2) +
+      " € pour atteindre ton objectif.";
+
+  document.getElementById("result").innerHTML =
+    "<strong>Ton solde : " + balance.toFixed(2) +
+    " €</strong><br>" + message;
+
+  try {
+    localStorage.setItem("novaBudgetData", JSON.stringify(values));
+    document.getElementById("status").textContent =
+      "✓ Budget sauvegardé automatiquement";
+  } catch (error) {
+    document.getElementById("status").textContent =
+      "Sauvegarde indisponible.";
+  }
+}
+
+function loadBudget() {
+  try {
+    const saved = localStorage.getItem("novaBudgetData");
+
+    if (saved) {
+      const data = JSON.parse(saved);
+
+      fields.forEach(field => {
+        if (Number.isFinite(data[field]) && data[field] >= 0) {
+          document.getElementById(field).value = data[field];
+        }
+      });
+    }
+  } catch (error) {
+    console.log("Sauvegarde non disponible.");
+  }
+
+  calculate();
+}
+
+loadBudget();
+</script>
+
+</body>
+</html>
